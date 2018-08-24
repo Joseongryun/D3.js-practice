@@ -51,10 +51,10 @@ d3.select("body").append("svg")
 `attribute`의 줄인말이다. 해당 태그의 속성을 추가 시킬수 있다.( 넓이, 높이, 색깔, 윤곽선 등등... )
 
 ```js
-var canvas = 	d3.select("body")
-				.append("svg")
-				.attr("width", 500)
-				.atrr("height", 500);
+var canvas = d3.select("body")
+		.append("svg")
+		.attr("width", 500)
+		.atrr("height", 500);
 ```
 
 
@@ -80,22 +80,22 @@ var canvas = 	d3.select("body")
 ```js
 var dataArray = [20, 30, 50];
 
-var canvas = 	d3.select("body")
-				.append("svg")
-				.attr("width", 500)
-				.atrr("height", 500);
+var canvas = d3.select("body")
+		.append("svg")
+		.attr("width", 500)
+		.atrr("height", 500);
 
-var bars = 	canvas.selectAll("rect")
-      		.data(dataArray)
-      		.enter()
-      		.append("rect")
-      		.attr("width", function (d) {
-				return d * 10;
-      		})
-      		.attr('height', 50)
-      		.attr('y', function (d, i) {
-        		return i * 60
-      		});
+var bars = canvas.selectAll("rect")
+      	.data(dataArray)
+      	.enter()
+      	.append("rect")
+      	.attr("width", function (d) {
+			return d * 10;
+      	})
+      	.attr('height', 50)
+      	.attr('y', function (d, i) {
+        	return i * 60
+      	});
 ```
 
 * `selectAll("rect")`
@@ -163,30 +163,30 @@ d3.scale().linear.domain([0, 500]).range([0, 5]);
 그럼 자동으로 `range` 의 인자들에 맞춰 실제 데이터들이 그려진다.
 
 ```js
-var witdhScale = 	d3.scale
-      				.linear()
-      				.domain([0, 60])
-      				.range([0, width]);
+var witdhScale = d3.scale
+		.linear()
+      	.domain([0, 60])
+      	.range([0, width]);
       
-var color =	 d3.scale
-      		.linear()
-      		.domain([0, 60])
-      		.range(["red", "blue"]); // 길이 뿐만 아니라 색상도 범위로 표현 가능하다
+var color =	d3.scale
+      	.linear()
+      	.domain([0, 60])
+      	.range(["red", "blue"]); // 길이 뿐만 아니라 색상도 범위로 표현 가능하다
       
-var bars = 	canvas.selectAll("rect")
-      		.data(dataArray)
-      		.enter()
-      		.append("rect")
-      		.attr("width", function (d) {
-        		return witdhScale(d);
-      		})
-      		.attr('height', 50)
-      		.attr("fill", function (d) {
-        		return color(d);
-      		}) //색을 바꿔주는 코드
-      		.attr('y', function (d, i) {
-        		return i * 60
-      		});
+var bars = canvas.selectAll("rect")
+      	.data(dataArray)
+      	.enter()
+      	.append("rect")
+      	.attr("width", function (d) {
+        	return witdhScale(d);
+      	})
+      	.attr('height', 50)
+      	.attr("fill", function (d) {
+        	return color(d);
+      	}) //색을 바꿔주는 코드
+      	.attr('y', function (d, i) {
+        	return i * 60
+      	});
 ```
 
 
@@ -204,12 +204,12 @@ var bars = 	canvas.selectAll("rect")
 * group
 
   ```js
-  var canvas = 	d3.select("body")
-  				.append("svg")
-  				.attr("width", width)
-  				.attr("height", height)
-  				.append("g")
-  				.attr("transform", "translate(0, 20)");
+  var canvas = d3.select("body")
+  		.append("svg")
+  		.attr("width", width)
+  		.attr("height", height)
+  		.append("g")
+  		.attr("transform", "translate(0, 20)");
   ```
 
   `g` 태그를 `append` 시키고 `translate`를 이용해 이동시켰다.
@@ -242,7 +242,7 @@ var bars = 	canvas.selectAll("rect")
 
 * graph.html
 
-```
+```html
 <!DOCTYPE html>
 <html>
 
@@ -300,7 +300,7 @@ var bars = 	canvas.selectAll("rect")
 
 * 화면
 
-![1535077803573](C:\Users\PAPICO\AppData\Local\Temp\1535077803573.png)
+![막대그래프](./img/막대그래프.png)
 
 
 
