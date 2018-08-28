@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    path {
+      fill: none;
+      stroke: black;
+      stroke-width: 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="chart"></div>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script>
+    var width = 800,
+      height = 600;
+
+    var svg = d3.select("#chart").append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    var map = svg.append("g").attr("id", "map"),
+      places = svg.append("g").attr("id", "places");
+
+    var projection = d3.geo.mercator()
+        .center([128, 36])
+        .scale(4000)
+        .translate([width/2, height/2]);
+
+    var path = d3.geo.path().projection(projection);
+
+    d3.json("korea.json", function (error, data) {
+      var features = topojson.feature(data, data.objects.korea).features;
+      map.selectAll("path")
+        .data(features)
+        .enter().append("path")
+        .attr("d", path);
+    });
+  </script>
+</body>
+</html

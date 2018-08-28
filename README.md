@@ -18,7 +18,7 @@ D3.js를 공부하면서 정리한 내용입니다.
 
   * 미리보기
 
-  ![1](./img/circleClickEvent.jpeg)
+  ![circleClickEvent](./img/circleClickEvent.jpeg)
 
 * [donutGraph.html]: https://github.com/Joseongryun/D3.js-practice/blob/master/practice/donutGraph.html
 
@@ -26,7 +26,7 @@ D3.js를 공부하면서 정리한 내용입니다.
 
   * 미리보기
 
-  ![1](./img/donutGraph.jpeg)
+  ![donutGraph](./img/donutGraph.jpeg)
 
 * [donutRouter.html]: https://github.com/Joseongryun/D3.js-practice/blob/master/practice/dotRouter.html
 
@@ -34,7 +34,7 @@ D3.js를 공부하면서 정리한 내용입니다.
 
   - 미리보기
 
-  ![1](./img/dotRouter.jpeg)
+  ![donutRouter](./img/dotRouter.jpeg)
 
 * [fileDataDot.html]: https://github.com/Joseongryun/D3.js-practice/blob/master/practice/fileDataDot.html
 
@@ -42,7 +42,7 @@ D3.js를 공부하면서 정리한 내용입니다.
 
   - 미리보기
 
-  ![1](./img/fileDataDot.jpeg)
+  ![fileDataDot](./img/fileDataDot.jpeg)
 
 * [stickGraph.html]: https://github.com/Joseongryun/D3.js-practice/blob/master/practice/stickGraph.html
 
@@ -50,7 +50,7 @@ D3.js를 공부하면서 정리한 내용입니다.
 
   - 미리보기
 
-  ![1](./img/stickGraph.jpeg)
+  ![stickGraph](./img/stickGraph.jpeg)
 
 * [dotRouterLocation.html]: https://github.com/Joseongryun/D3.js-practice/blob/master/practice/dotRouterLocation.html
 
@@ -58,7 +58,15 @@ D3.js를 공부하면서 정리한 내용입니다.
 
   - 미리보기
 
-  ![1](./img/dotRouterLocation.jpeg)
+  ![dotRouterLocation](./img/dotRouterLocation.jpeg)
+
+* [topo.html]: https://github.com/Joseongryun/D3.js-practice/blob/master/practice/topo.html
+
+  topojson 안에있는 우리나라 지도 정보를 뿌림
+
+  - 미리보기
+
+  ![dotRouterLocation](./img/todo.jpg)
 
 ### D3 project
 
