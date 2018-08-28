@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <script>
+    var data = [5, 20, 30, 60, 90, 100];
+    var r = 300;
+
+    var canvas = d3.select("body").append("svg")
+      .attr("width", 1500)
+      .attr('height', 1500);
+
+    var colorScale = d3.scale
+      .linear()
+      .domain([0, 100])
+      .range(["white", "black"]);
+
+    var group = canvas.append("g")
+      .attr('transform', "translate(300, 300)");
+
+    var arc = d3.svg.arc()
+      .innerRadius(200)
+      .outerRadius(r);
+
+    var pie = d3.layout.pie()
+      .value(function (d) {
+        return d;
+      });
+
+    var arcs = group.selectAll(".arc")
+      .data(pie(data))
+      .enter()
+      .append("g")
+      .attr("class", "arc");
+
+    arcs.append("path")
+      .attr("d", arc)
+      .attr('fill', function (d) {
+        return colorScale(d.data);
+      });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+  <script src="https://d3js.org/d3-selection.v1.min.js"></script>
+  <script src="https://d3js.org/d3-drag.v1.min.js"></script>
+  <style>
+  </style>
+</head>
+
+<body>
+  <svg width="800" height="800">
+
+  </svg>
+  <script>
+    var imgWidth = 50,
+      imgHeight = 50;
+    var svg = d3.select("svg");
+
+    var data = [{
+        x: 50,
+        y: 60
+      },
+      {
+        x: 70,
+        y: 150
+      }
+    ]
+
+
+
+    svg.on('click', function () {
+      var mouse = d3.mouse(this);
+
+      var img = svg.append("svg:image")
+        .datum({
+          x: mouse[0],
+          y: mouse[1]
+        })
+        .attr('x', function (d) {
+          return d.x - (imgWidth / 2)
+        })
+        .attr('y', function (d) {
+          return d.y - (imgHeight / 2)
+        })
+        .attr('width', imgWidth)
+        .attr('height', imgHeight)
+        .attr('xlink:href', "../img/router.png");
+
+      img.on('click', function () {
+        if (d3.event.ctrlKey) {
+          img.remove();
+        }else {
+          var datum = img.datum();
+        }
+      })
+
+    })
+
+
+    var dragHandler = d3.drag()
+      .on('drag', function (d) {
+        d3.select(this)
+          .attr('x', d.x = d3.event.x)
+          .attr('y', d.y = d3.event.y);
+      });
+
+    dragHandler(svg.selectAll('image'))
+    window.onload = function () {
+      svg.selectAll("image")
+        .data(data).enter()
+        .append("svg:image")
+        .attr('x', function (d) {
+          return d.x
+        })
+        .attr('y', function (d) {
+          return d.y
+        })
+        .attr('width', imgWidth)
+        .attr('height', imgHeight)
+        .attr('xlink:href', "../img/router.png");
+    }
+  </script>
+</body>
+
+</html>

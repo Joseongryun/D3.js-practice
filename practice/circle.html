@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <script>
+    var data = [10, 20, 30];
+
+    var colorScale = d3.scale
+      .linear()
+      .domain([0, 30])
+      .range(["orange", "green"]);
+    var canvas = d3.select("body").append("svg").attr('width', 500).attr('height', 500);
+    var circles = canvas.selectAll("circle").data(data.reverse()).enter().append("circle").attr('cx', 150).attr('cy',
+      150).attr(
+      'r',
+      function (d) {
+        return d * 5;
+      }).attr("fill", function (d) {
+      return colorScale(d);
+    }).on("click", animate);
+
+    function animate() {
+      d3.select(this).transition()
+        .duration(1000)
+        .attr('r', function (d) {
+          return d * 2;
+        })
+        .transition()
+        .duration(1000)
+        .attr('r', function (d) {
+          return d * 5
+        })
+    }
+  </script>
+</body>
+
+</html>

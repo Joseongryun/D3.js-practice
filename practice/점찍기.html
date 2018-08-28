@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <style>
+    svg {
+      cursor: crosshair;
+    }
+    .buttons{
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="buttons">
+      <button class="button" id="addMode">추가 모드</button>
+      <button class="button" id="selectMode">선택 모드</button>
+  </div>
+  <script>
+    var width = 800,
+      height = 800;
+
+    var imgWidth = 50,
+      imgHeight = 50;
+
+    var data = [];
+
+    var lengthScale = d3.scale
+      .linear()
+      .domain([0, 100])
+      .range([0, 800]);
+
+    var topAxis = d3.svg.axis().orient("top").scale(lengthScale);
+    var leftAxis = d3.svg.axis().orient("left").scale(lengthScale);
+    var svg = d3.select("body").append("svg").attr('width', width).attr('height', height);
+    
+    svg.on('mousedown', function () {
+      let mousePoint = {
+        x: d3.mouse(this)[0],
+        y: d3.mouse(this)[1]
+      }
+      data.push(mousePoint);
+      drawPoint(data);
+    })
+
+    function drawPoint(data) {
+      var img = svg.selectAll("image").data(data);
+      img.enter()
+        .append("svg:image")
+        .attr('x', function (d) {
+          return lengthScale(lengthScale.invert(d.x - (imgWidth / 2)));
+        })
+        .attr('y', function (d) {
+          return lengthScale(lengthScale.invert(d.y - (imgHeight / 2)));
+        })
+        .attr('width', imgWidth)
+        .attr('height', imgHeight)
+        .attr("xlink:href", "../img/router.png");
+    }
+
+
+    svg.append("g").attr("transform", "translate(50, 50)").call(topAxis);
+    svg.append("g").attr("transform", "translate(50, 50)").call(leftAxis);
+  </script>
+</body>
+
+</html>
